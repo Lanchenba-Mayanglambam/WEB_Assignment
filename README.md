@@ -1,6 +1,6 @@
-# Habibi Restaurant Menu App
+# Restaurant Menu App
 
-A Node.js, Express, MongoDB, and EJS web app for browsing a restaurant menu. The app renders a home page, lists all menu items, supports menu search, and sorts items by price.
+A Node.js, Express, MongoDB, and EJS web app for managing a restaurant menu. The app renders a home page, lists all menu items, supports menu search, sorts items by price, and includes basic create, update, and delete actions for food items.
 
 ## Features
 
@@ -8,6 +8,9 @@ A Node.js, Express, MongoDB, and EJS web app for browsing a restaurant menu. The
 - Full menu listing from MongoDB
 - Search menu items by food name
 - Sort menu items by price in ascending or descending order
+- Add new food items
+- Edit existing food items
+- Delete food items
 - Request logging middleware that writes request details to `logs/data.txt`
 
 ## Tech Stack
@@ -35,6 +38,8 @@ A Node.js, Express, MongoDB, and EJS web app for browsing a restaurant menu. The
 │   └── menuRoutes.js
 ├── views/
 │   ├── Food.ejs
+│   ├── edit.ejs
+│   ├── form.ejs
 │   ├── home.ejs
 │   └── searchResults.ejs
 ├── package.json
@@ -91,6 +96,11 @@ Note: `package.json` currently uses `node server.js` for `npm start`, but this p
 | GET | `/search?q=item` | Search food items by `FoodName` |
 | GET | `/sort/price?order=asc` | Sort food items from low to high price |
 | GET | `/sort/price?order=desc` | Sort food items from high to low price |
+| GET | `/addItem` | Render the add item form |
+| POST | `/createItem` | Create a new food item |
+| GET | `/editItem/:userid` | Render the edit form for one food item |
+| POST | `/update/:userid` | Update one food item |
+| GET | `/deleteItem/:id` | Delete one food item and redirect to the menu |
 
 ## Database Model
 
