@@ -37,6 +37,12 @@ transition:transform .3s,box-shadow .3s,border-color .3s}
 .row{display:flex;justify-content:space-between;align-items:center;font-size:15px;color:var(--cream2)}
 .price{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--terra);font-size:22px}
 .stars{color:var(--gold)}
+.body a[href^="/editItem"],.body a[href^="/deleteItem"]{display:inline-block;margin-top:14px;margin-right:8px;
+font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:7px 14px;border-radius:3px;text-decoration:none;transition:.2s}
+.body a[href^="/editItem"]{color:var(--gold2);border:1px solid rgba(204,154,74,.4);background:rgba(204,154,74,.08)}
+.body a[href^="/editItem"]:hover{background:var(--gold);color:var(--ink);transform:translateY(-2px)}
+.body a[href^="/deleteItem"]{color:#e8917a;border:1px solid rgba(194,89,47,.4);background:rgba(194,89,47,.1)}
+.body a[href^="/deleteItem"]:hover{background:var(--terra);color:var(--cream);transform:translateY(-2px)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
@@ -72,6 +78,9 @@ return `https://images.unsplash.com/photo-${pool[h%pool.length]}?w=300&h=200&fit
       <div class="name"><%= element.FoodName %></div>
       <div class="row"><span class="price">$<%= element.Price %></span><span><%= element.Quantity %> left</span></div>
       <div class="row"><span class="stars">★ <%= element.Rating %></span></div>
+        <a href="/editItem/<%= element._id %>">Edit</a>
+
+        <a href="/deleteItem/<%= element._id %>" >Delete</a>
     </div>
   </div>
 <% }); %>

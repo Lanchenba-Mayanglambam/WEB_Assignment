@@ -36,7 +36,7 @@ const menuController = {
     },
 
 
-    sortByPrice: async (req, res) => {
+    sortByPrice : async (req, res) => {
         try {
             const order = req.query.order;
             let items;
@@ -55,7 +55,41 @@ const menuController = {
         } catch (error) {
             res.status(500).send(err.message);
         }
+    },
+
+
+    addItem : async (req,res)=>{
+        res.render("form");
+    },
+
+
+    editItem : async (req,res)=>{
+        const data = await menu.findById(req.params.userid);
+        res.render("edit", { data });
+    },
+
+
+    deleteItem : async (req,res)=>{
+        await menu.findByIdAndDelete(req.params.id);
+        res.redirect("/getMenu")
+    },
+
+
+    updateItem: async (req, res) => {
+        await menu.findByIdAndUpdate(req.params.userid, req.body, {
+            new: true
+        });
+
+        res.redirect("/getMenu");
+    },
+
+
+    createItem: async (req, res) => {
+        req.body.ip = req.ip;
+        await menu.create(req.body);
+        res.redirect("/getMenu");
     }
+
 
 
 

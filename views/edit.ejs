@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habibi Restaurant — Edit Item</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Jost:wght@300;500&display=swap');
+    :root{--ink:#1a120b;--terra:#c2592f;--gold:#cc9a4a;--gold2:#e0c388;--cream:#f3e9d6;--cream2:#cdbfa5}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{min-height:100vh;background:var(--ink) radial-gradient(60% 50% at 50% 0%,rgba(194,89,47,.16),transparent 70%);
+    font-family:'Jost',sans-serif;color:var(--cream);display:flex;align-items:center;justify-content:center;padding:24px}
+    form{display:flex;flex-direction:column;gap:14px;width:100%;max-width:420px;background:linear-gradient(180deg,#2c1d12,#20140d);
+    border:1px solid rgba(204,154,74,.3);border-radius:6px;padding:30px 28px;position:relative;box-shadow:0 30px 60px -25px rgba(0,0,0,.8)}
+    form::before{content:"Edit Item";font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;text-align:center;margin-bottom:6px}
+    form::after{content:"";position:absolute;top:-7px;left:0;right:0;height:14px;
+    background:radial-gradient(circle,var(--ink) 5px,transparent 5.5px) repeat-x;background-size:22px 14px}
+    input{background:rgba(243,233,214,.05);border:1px solid rgba(204,154,74,.35);border-radius:3px;
+    padding:13px 16px;color:var(--cream);font-family:inherit;font-size:15px;outline:none;transition:.25s}
+    input::placeholder{color:var(--cream2)}
+    input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(204,154,74,.18)}
+    button{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--ink);
+    background:linear-gradient(180deg,var(--gold2),var(--gold));border:none;border-radius:3px;padding:14px;cursor:pointer;transition:.2s;margin-top:6px}
+    button:hover{filter:brightness(1.1);transform:translateY(-1px)}
+    </style>
+</head>
+<body>
+
+    <form action="/update/<%=data._id%>" method="POST">
+    
+    <input type="text" name="FoodName" placeholder="Enter FoodName" value="<%=data.FoodName%>">
+    
+    <input type="text" name="Category" placeholder="Enter Category" value="<%=data.Category%>">
+    
+    <input type="number" name="Price" placeholder="Enter Price" value="<%=data.Price%>">
+
+    <input type="number" name="Quantity" placeholder="Enter Quantity" value="<%=data.Quantity%>">
+
+    <input type="number" name="Rating" placeholder="Enter Rating" value="<%=data.Rating%>">
+    
+    <button type="submit">Edit Item</button>
+
+</form>
+    
+</body>
+</html>
